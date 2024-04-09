@@ -1,0 +1,25 @@
+{% extends 'features/srbase.html' %}
+
+{% block body %}
+    <h2 style="text-align:center;"><span class="sty" style="font-size:50px;color:black; font-family:Times New Roman, Times, serif;">Search Trains </span></h2>
+    <br/><br/>
+    <br/><br/>
+    <form class="form-inline" style="margin-left:200px;"action="trains" method="POST">
+        {% csrf_token %}
+        <span class="sty" style="font-size:30px;color:black; width: 20%;padding: 1%; text-align: center;" >Source:</span>
+        <select style="width: 20%;padding: 1%; text-align: center; margin:5%;" name="src">
+            {% for i in a %}
+            <option value="{{i.sid}}">{{i.sname}}</option>
+            {%endfor%}
+        </select>
+        <span class="sty" style="font-size:30px;color:black;">Destination:</span>
+        <select  style="width: 20%;padding: 1%; text-align: center; margin:5%;" name="des">
+            {% for i in a %}
+            <option value="{{i.sid}}">{{i.sname}}</option>
+            {%endfor%}
+        </select>
+        &nbsp
+        <br>
+        <input style="margin-left:40%; margin-right=40%;" class="btn btn-success" type="submit" value="Search">
+    </form>
+{% endblock%}
